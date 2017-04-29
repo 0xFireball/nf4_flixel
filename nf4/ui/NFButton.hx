@@ -11,7 +11,7 @@ class NFButton extends FlxButton {
         super(X, Y, Text, OnClick);
 
         loadGraphic(AssetPaths.button__png, true, 180, 40);
-        label.setFormat(AssetPaths.raleway__ttf, 24, FlxColor.WHITE, FlxTextAlign.CENTER);
+        label.setFormat(24, FlxColor.WHITE, FlxTextAlign.CENTER);
     }
 
 }
