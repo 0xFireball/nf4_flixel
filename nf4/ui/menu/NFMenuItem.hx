@@ -27,6 +27,9 @@ class NFMenuItem extends FlxGroup {
     private var bkTween:FlxTween;
     private var olTween:FlxTween;
 
+    public var x(get, null):Float;
+    public var y(get, null):Float;
+
     private var callback:Void->Void;
 
     public function new(Text:NFText, Width:Float, ?SelectCallback:Void->Void) {
@@ -196,6 +199,14 @@ class NFMenuItem extends FlxGroup {
         }
 
         super.update(dt);
+    }
+
+    private function get_x():Float {
+        return backing.x;
+    }
+
+    private function get_y():Float {
+        return backing.y;
     }
 
 }
