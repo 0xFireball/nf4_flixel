@@ -4,7 +4,7 @@ import flixel.*;
 import flixel.util.*;
 import flixel.group.FlxGroup;
 
-class MenuItemGroup extends FlxTypedGroup<MenuItem> {
+class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
 
     private var foregroundColor:FlxColor = FlxColor.fromInt(0xAAEEEEEE);
     private var backgroundColor:FlxColor = FlxColor.fromInt(0xAA222222);
@@ -14,7 +14,7 @@ class MenuItemGroup extends FlxTypedGroup<MenuItem> {
 
     public var itemMargin:Float = 10;
 
-    private var items:Array<MenuItem> = new Array<MenuItem>();
+    private var items:Array<NFMenuItem> = new Array<NFMenuItem>();
     private var currentOffset:Float = 0;
     
     private var selectedIndex:Int = -1;
@@ -34,7 +34,7 @@ class MenuItemGroup extends FlxTypedGroup<MenuItem> {
         startY = StartY;
     }
 
-    public function addItem(Item:MenuItem) {
+    public function addItem(Item:NFMenuItem) {
         Item.updateTheme(foregroundColor, backgroundColor);
         Item.updatePosition(centerX, startY + currentOffset);
         currentOffset += Item.height + itemMargin;

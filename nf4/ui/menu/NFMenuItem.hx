@@ -7,7 +7,7 @@ import flixel.group.FlxGroup;
 
 import nf4.ui.*;
 
-class MenuItem extends FlxGroup {
+class NFMenuItem extends FlxGroup {
 
     private var text:NFText;
     private var backing:FlxSprite;
