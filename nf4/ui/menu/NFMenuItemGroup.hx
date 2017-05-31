@@ -71,10 +71,10 @@ class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
         #if !FLX_NO_GAMEPAD
         var gamepad = FlxG.gamepads.lastActive;
         if (gamepad != null) {
-            dfc = gamepad.anyJustPressed([ LEFT_TRIGGER_BUTTON, B ]);
-            up = gamepad.anyJustPressed([ DPAD_UP ]);
-            down = gamepad.anyJustPressed([ DPAD_DOWN ]);
-            sel = gamepad.anyJustPressed([ DPAD_RIGHT, A, START ]);
+            dfc = dfc || gamepad.anyJustPressed([ LEFT_TRIGGER_BUTTON, B ]);
+            up = up || gamepad.anyJustPressed([ DPAD_UP ]);
+            down = down || gamepad.anyJustPressed([ DPAD_DOWN ]);
+            sel = sel || gamepad.anyJustPressed([ DPAD_RIGHT, A, START ]);
         }
         #end
 
