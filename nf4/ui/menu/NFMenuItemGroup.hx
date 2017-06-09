@@ -62,7 +62,7 @@ class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
         var sel:Bool = false;
         
         #if !FLX_NO_KEYBOARD
-        dfc = FlxG.keys.anyJustPressed([ ESCAPE ]);
+        dfc = FlxG.keys.anyJustPressed([ ESCAPE, Q ]);
         down = FlxG.keys.anyJustPressed([DOWN, S]);
         up = FlxG.keys.anyJustPressed([UP, W]);
         sel = FlxG.keys.anyJustPressed([ ENTER, E ]);
