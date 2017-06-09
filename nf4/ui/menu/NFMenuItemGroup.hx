@@ -78,11 +78,13 @@ class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
         }
         #end
 
+        if (!defocus && (dfc || down || up)) {
+            items[selectedIndex].deselect(true);
+        }
         if (!defocus && dfc) {
             defocus = true;
-        }
-        if (!defocus && (down || up)) {
-            items[selectedIndex].deselect(true);
+            // reset index
+            selectedIndex = -1;
         }
         if (down) {
             defocus = false;
