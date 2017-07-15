@@ -4,9 +4,11 @@ package nf4;
 import flixel.FlxSprite;
 import flixel.math.*;
 
+import flixel.addons.nape.FlxNapeSprite;
+
 using nf4.math.NFMathExt;
 
-class NFSprite extends FlxSprite {
+class NFNapeSprite extends FlxNapeSprite {
     public var damage(get, set):Float;
 
 	public var center(get, null):FlxPoint;
