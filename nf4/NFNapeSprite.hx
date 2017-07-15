@@ -54,4 +54,19 @@ class NFNapeSprite extends FlxNapeSprite {
 	private function get_momentum():FlxVector {
 		return velocity.toVector().scale(mass);
 	}
+
+	public override function update(dt:Float) {
+		super.update(dt);
+
+		// apply custom kinematics
+		applyCustomKinematics(dt);
+	}
+
+	private function applyCustomKinematics(dt:Float) {
+		var velocityDelta = 0.5 * (FlxVelocity.computeVelocity(FlxAngle.asDegrees(body.angularVel), angularAcceleration, angularDrag, maxAngular, dt) - FlxAngle.asDegrees(body.angularVel));
+		// angularVelocity += velocityDelta;
+		// angle += body.angularVel * dt;
+		// angularVelocity += velocityDelta;
+		body.angularVel += 2 * FlxAngle.asRadians(velocityDelta);
+	}
 }
