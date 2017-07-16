@@ -23,10 +23,10 @@ class NFMenuSwitch extends NFMenuItem {
         selectedIndex = SelectedIndex;
 
         rightArrow = new FlxSprite();
-        rightArrow.loadGraphic(AssetPaths.nf4_ui_arrow__png);
+        rightArrow.loadGraphic(NF4AssetPaths.nf4_ui_arrow__png);
 
         leftArrow = new FlxSprite();
-        leftArrow.loadGraphic(AssetPaths.nf4_ui_arrow__png);
+        leftArrow.loadGraphic(NF4AssetPaths.nf4_ui_arrow__png);
         leftArrow.setFacingFlip(FlxObject.LEFT, true, false);
         leftArrow.facing = FlxObject.LEFT;
 
@@ -34,7 +34,7 @@ class NFMenuSwitch extends NFMenuItem {
         add(leftArrow);
     }
 
-    public function updatePosition(CenterX:Float, Y:Float) {
+    public override function updatePosition(CenterX:Float, Y:Float) {
         super.updatePosition(CenterX, Y);
         
         leftArrow.x = backing.x  + backing.width * arrowMarginFactor;
