@@ -18,4 +18,9 @@ release that includes the features.
 
 `*` - Changes submitted and merged to upstream
 
+# License
+
+Copyright &copy; 2016-2017 Nihal Talur (0xFireball) (PetaPhaser). All Rights Reserved.
+
+Licensed under the Apache License 2.0.
 
