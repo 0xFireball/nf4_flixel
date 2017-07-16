@@ -52,7 +52,7 @@ class NFMenuItem extends FlxGroup {
         backing.makeGraphic(Std.int(width), Std.int(height), FlxColor.WHITE);
         add(backing);
 
-        add(text);
+        add(text); // layer 2
 
         enable();
     }
