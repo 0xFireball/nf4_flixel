@@ -7,14 +7,28 @@ import flixel.math.*;
 using nf4.math.NFMathExt;
 
 class NFSprite extends FlxSprite {
+
+    /**
+     *  Utility for setting health by percentages.
+	 *  For example, setting `damage` to 0.2 will
+	 *  set the `health` to 80% of `maxHealth`.
+     */
     public var damage(get, set):Float;
 
+	/**
+	 *  Utility for getting the center of the sprite
+	 *  based on its x, y, width, and height.
+	 */
 	public var center(get, null):FlxPoint;
 
+	/**
+	 *  Utility for getting a momentum vector based
+	 *  on the sprite's velocity and mass.
+	 */
 	public var momentum(get, null):FlxVector;
 
     /**
-	 * Utility for storing maximum health
+	 * Utility for storing maximum health.
 	 */
 	public var maxHealth:Float = 1;
 
