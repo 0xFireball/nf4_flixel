@@ -21,12 +21,15 @@ class NFMenuSwitch extends NFMenuItem {
     private var lArrowTween:FlxTween;
     private var rArrowTween:FlxTween;
 
-    public function new(TextContainer:NFText, Items:Array<String>, Width:Float, SelectedIndex:Int = 0, ?SelectCallback:Void->Void) {
+    private var selectionChangedCallback:Int->Void;
+
+    public function new(TextContainer:NFText, Items:Array<String>, Width:Float, SelectedIndex:Int = 0, ?SelectCallback:Void->Void, ?SelectionChangedCallback:Int->Void) {
         TextContainer.text = Items[SelectedIndex];
         super(TextContainer, Width, SelectCallback);
 
         items = Items;
         selectedIndex = SelectedIndex;
+        selectionChangedCallback = SelectionChangedCallback;
 
         rightArrow = new FlxSprite();
         rightArrow.loadGraphic(NF4AssetPaths.nf4_ui_arrow__png);
@@ -118,6 +121,11 @@ class NFMenuSwitch extends NFMenuItem {
 
                 // update text
                 text.text = items[selectedIndex];
+
+                // fire callback
+                if (selectionChangedCallback != null) {
+                    selectionChangedCallback(selectedIndex);
+                }
             }
         }
     }
