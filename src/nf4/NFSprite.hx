@@ -4,6 +4,8 @@ package nf4;
 import flixel.FlxSprite;
 import flixel.math.*;
 
+import flixel.group.FlxGroup;
+
 using nf4.math.NFMathExt;
 
 class NFSprite extends FlxSprite {
