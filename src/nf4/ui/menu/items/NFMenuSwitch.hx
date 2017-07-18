@@ -31,6 +31,8 @@ class NFMenuSwitch extends NFMenuItem {
         selectedIndex = SelectedIndex;
         selectionChangedCallback = SelectionChangedCallback;
 
+        onSelectionChanged();
+
         rightArrow = new FlxSprite();
         rightArrow.loadGraphic(NF4AssetPaths.nf4_ui_arrow__png);
 
@@ -122,11 +124,15 @@ class NFMenuSwitch extends NFMenuItem {
                 // update text
                 text.text = items[selectedIndex];
 
-                // fire callback
-                if (selectionChangedCallback != null) {
-                    selectionChangedCallback(selectedIndex);
-                }
+                onSelectionChanged();
             }
+        }
+    }
+
+    private function onSelectionChanged() {
+        // fire callback
+        if (selectionChangedCallback != null) {
+            selectionChangedCallback(selectedIndex);
         }
     }
 
