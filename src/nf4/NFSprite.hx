@@ -32,14 +32,54 @@ class NFSprite extends FlxSprite {
 	 */
 	public var maxHealth:Float = 1;
 
+	/**
+	 *  Sub-sprites are handy for attaching other
+	 *  sprites to this sprite, like a FlxEmitter.
+	 *  The subsprites will follow the same lifecycle
+	 *  as this sprite, except dead subsprites will be destroyed.
+	 */
+	public var subSprites:FlxGroup;
+
     public function new(?X:Float = 0, ?Y:Float = 0) {
         super(X, Y);
+
         damage = 0;
+		subSprites = new FlxGroup();
     }
 
 	public function apply_impulse(Direction:FlxPoint, Magnitude:Float) {
 		velocity.addPoint(Direction.scale(Magnitude / mass));
 	}
+
+	public override function update(dt:Float) {
+		subSprites.update(dt);
+
+		// nuke dead subsprites
+		subSprites.forEachDead(function (d) {
+			subSprites.remove(d, true);
+			d.destroy();
+		});
+
+		super.update(dt);
+    }
+
+    public override function draw():Void {
+		super.draw();
+
+		subSprites.draw();
+	}
+
+    public override function kill() {
+		super.kill();
+		subSprites.kill();
+	}
+
+    public override function destroy() {
+		subSprites.destroy();
+		subSprites = null;
+
+        super.destroy();
+    }
 
 	public function explode() {
 		dismantle();
