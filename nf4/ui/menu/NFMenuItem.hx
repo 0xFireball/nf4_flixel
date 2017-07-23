@@ -165,6 +165,13 @@ class NFMenuItem extends FlxGroup {
         hover = FlxG.mouse.x > backing.x && FlxG.mouse.x < backing.x + backing.width
             && FlxG.mouse.y > backing.y && FlxG.mouse.y < backing.y + backing.height;
         #end
+        #if !FLX_NO_TOUCH
+        var touch = FlxG.touches.getFirst();
+        if (touch != null) {
+            hover = hover || touch.x > backing.x && touch.x < backing.x + backing.width
+            && touch.y > backing.y && touch.y < backing.y + backing.height;
+        }
+        #end
         return hover;
     }
 
@@ -178,7 +185,7 @@ class NFMenuItem extends FlxGroup {
 
         #if !FLX_NO_TOUCH
         var touch = FlxG.touches.getFirst();
-        if (touch != null) {
+        if (touch != null && touch.justReleased) {
             press = press || touch.x > backing.x && touch.x < backing.x + backing.width
             && touch.y > backing.y && touch.y < backing.y + backing.height;
         }
