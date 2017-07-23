@@ -21,6 +21,8 @@ class NFMenuSwitch extends NFMenuItem {
     private var lArrowTween:FlxTween;
     private var rArrowTween:FlxTween;
 
+    private var nextItem:Bool;
+
     private var selectionChangedCallback:Int->Void;
 
     public function new(TextContainer:NFText, Items:Array<String>, Width:Float, SelectedIndex:Int = 0, ?SelectCallback:Void->Void, ?SelectionChangedCallback:Int->Void) {
@@ -78,6 +80,11 @@ class NFMenuSwitch extends NFMenuItem {
         }
     }
 
+    public override function activate() {
+        super.activate();
+        nextItem = true; // force switching to next item
+    }
+
     private override function anyTweens() {
         return super.anyTweens()
             || (lArrowTween != null && !lArrowTween.finished)
@@ -96,11 +103,12 @@ class NFMenuSwitch extends NFMenuItem {
         if (selected) {
             // handle switching
             var left:Bool = false;
-            var right:Bool = false;
+            var right:Bool = nextItem;
+            nextItem = false;
 
             #if !FLX_NO_KEYBOARD
-            left = FlxG.keys.anyJustPressed([LEFT, A]);
-            right = FlxG.keys.anyJustPressed([RIGHT, D]);
+            left = left || FlxG.keys.anyJustPressed([LEFT, A]);
+            right = right || FlxG.keys.anyJustPressed([RIGHT, D]);
             #end
 
             #if !FLX_NO_GAMEPAD
