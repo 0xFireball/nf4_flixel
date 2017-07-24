@@ -2,6 +2,7 @@ package nf4.ui.touch;
 
 import flixel.ui.FlxAnalog;
 import flixel.system.FlxAssets;
+import flixel.math.FlxAngle;
 
 class NFAnalogEx extends FlxAnalog {
 
@@ -31,5 +32,4 @@ class NFAnalogEx extends FlxAnalog {
     private function get_down():Bool {
         return Math.abs(getAngle() - 90) < directionAngleThreshold;
     }
-
 }
