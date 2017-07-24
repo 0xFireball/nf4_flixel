@@ -10,7 +10,7 @@ class NFAnalogEx extends FlxAnalog {
         super(X, Y, Radius, Ease, BaseGraphic, ThumbGraphic);
     }
 
-    private var directionAngleThreshold:Float = 60;
+    private var directionAngleThreshold:Float = Math.PI / 3;
 
     public var left(get, null):Bool;
     public var up(get, null):Bool;
@@ -18,18 +18,26 @@ class NFAnalogEx extends FlxAnalog {
     public var down(get, null):Bool;
 
     private function get_left():Bool {
-        return Math.abs(getAngle() - 180) < directionAngleThreshold;
+        return inAngleThreshold(Math.PI);
     }
 
     private function get_up():Bool {
-        return Math.abs(getAngle() - 270) < directionAngleThreshold;
+        return inAngleThreshold(-Math.PI / 2);
     }
 
     private function get_right():Bool {
-        return Math.abs(getAngle() - 0) < directionAngleThreshold;
+        return inAngleThreshold(0);
     }
 
     private function get_down():Bool {
-        return Math.abs(getAngle() - 90) < directionAngleThreshold;
+        return inAngleThreshold(Math.PI / 2);
+    }
+
+    private function inAngleThreshold(TargetAngle:Float) {
+        var angle = this._direction;
+        if (angle < 0) angle += 2 * Math.PI;
+        var diff = Math.abs(angle - TargetAngle) % (Math.PI * 2);
+        if (diff > Math.PI) diff = Math.PI * 2 - diff;
+        return diff < directionAngleThreshold;
     }
 }
