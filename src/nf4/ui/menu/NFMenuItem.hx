@@ -10,8 +10,8 @@ import nf4.ui.*;
 class NFMenuItem extends FlxGroup {
 
     private var text:NFText;
-    private var backing:FlxSprite;
-    private var outline:FlxSprite;
+    private var backing:NFSprite;
+    private var outline:NFSprite;
 
     private var marginFactor:Float = 0.2;
     private var outlineSize:Int = 2;
@@ -42,13 +42,13 @@ class NFMenuItem extends FlxGroup {
         height = text.height * (1 + marginFactor * 2);
 
         // create outline
-        outline = new FlxSprite();
+        outline = new NFSprite();
         outline.makeGraphic(Std.int(width + 2 * outlineSize), Std.int(height + 2 * outlineSize), FlxColor.WHITE);
         outline.alpha = 0;
         add(outline);
 
         // create backing
-        backing = new FlxSprite();
+        backing = new NFSprite();
         backing.makeGraphic(Std.int(width), Std.int(height), FlxColor.WHITE);
         add(backing);
 
@@ -169,14 +169,13 @@ class NFMenuItem extends FlxGroup {
     private function isHovering():Bool {
         var hover:Bool = false;
         #if !FLX_NO_MOUSE
-        hover = FlxG.mouse.x > backing.x && FlxG.mouse.x < backing.x + backing.width
-            && FlxG.mouse.y > backing.y && FlxG.mouse.y < backing.y + backing.height;
+        var mousePos = FlxG.mouse.getPositionInCameraView(cameras[0]);
+        hover = hover || backing.getHitbox().containsPoint(mousePos);
         #end
         #if !FLX_NO_TOUCH
         var touch = FlxG.touches.getFirst();
         if (touch != null) {
-            hover = hover || touch.x > backing.x && touch.x < backing.x + backing.width
-            && touch.y > backing.y && touch.y < backing.y + backing.height;
+            hover = hover || backing.getHitbox().containsPoint(touch);
         }
         #end
         return hover;

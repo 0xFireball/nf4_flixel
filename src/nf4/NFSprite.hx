@@ -1,7 +1,7 @@
 
 package nf4;
 
-import flixel.FlxSprite;
+import flixel.*;
 import flixel.math.*;
 
 import flixel.group.FlxGroup;
