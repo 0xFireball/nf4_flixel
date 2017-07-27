@@ -76,6 +76,11 @@ class NFSprite extends FlxSprite {
 		subSprites.kill();
 	}
 
+	public override function revive() {
+		super.revive();
+		subSprites.revive();
+	}
+
     public override function destroy() {
 		subSprites.destroy();
 		subSprites = null;
