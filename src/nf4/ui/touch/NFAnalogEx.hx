@@ -8,6 +8,11 @@ class NFAnalogEx extends FlxAnalog {
 
     public function new(X:Float = 0, Y:Float = 0, Radius:Float = 0, Ease:Float = 0.25, ?BaseGraphic:FlxGraphicAsset, ?ThumbGraphic:FlxGraphicAsset) {
         super(X, Y, Radius, Ease, BaseGraphic, ThumbGraphic);
+
+        // update cameras
+        forEach(function (s) {
+            s.cameras = cameras;
+        });
     }
 
     private var directionAngleThreshold:Float = Math.PI / 3;
