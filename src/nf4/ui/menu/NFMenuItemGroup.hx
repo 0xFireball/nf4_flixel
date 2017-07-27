@@ -39,6 +39,10 @@ class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
         Item.updatePosition(centerX, startY + currentOffset);
         currentOffset += Item.height + itemMargin;
         items.push(Item);
+        // update item properties
+        Item.cameras = cameras;
+        Item.updateCameras();
+
         add(Item);
     }
 

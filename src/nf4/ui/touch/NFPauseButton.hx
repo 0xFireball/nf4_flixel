@@ -14,10 +14,13 @@ class NFPauseButton extends FlxSprite {
     public function isPressed():Bool {
         var press:Bool = false;
 
+        var mousePos = FlxG.mouse.getPositionInCameraView(cameras[0]);
+
         #if !FLX_NO_MOUSE
-        press = press || FlxG.mouse.x > this.x && FlxG.mouse.x < this.x + this.width
-            && FlxG.mouse.y > this.y && FlxG.mouse.y < this.y + this.height;
+        press = press || mousePos.x > this.x && mousePos.x < this.x + this.width
+            && mousePos.y > this.y && mousePos.y < this.y + this.height;
         #end
+
 
         #if !FLX_NO_TOUCH
         var touch = FlxG.touches.getFirst();

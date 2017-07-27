@@ -57,6 +57,13 @@ class NFMenuItem extends FlxGroup {
         enable();
     }
 
+    @:allow(nf4.ui)
+    public function updateCameras() {
+        forEach(function (f) {
+            f.cameras = cameras;
+        });
+    }
+
     public function updateTheme(ForegroundColor:FlxColor, BackgroundColor:FlxColor) {
         text.color = ForegroundColor;
         backing.color = BackgroundColor;
