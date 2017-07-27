@@ -14,6 +14,11 @@ class NFPauseButton extends FlxSprite {
     public function isPressed():Bool {
         var press:Bool = false;
 
+        #if !FLX_NO_MOUSE
+        press = press || FlxG.mouse.x > this.x && FlxG.mouse.x < this.x + this.width
+            && FlxG.mouse.y > this.y && FlxG.mouse.y < this.y + this.height;
+        #end
+
         #if !FLX_NO_TOUCH
         var touch = FlxG.touches.getFirst();
         if (touch != null) {
