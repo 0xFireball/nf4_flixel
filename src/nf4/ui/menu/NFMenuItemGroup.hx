@@ -65,11 +65,21 @@ class NFMenuItemGroup extends FlxTypedGroup<NFMenuItem> {
         var dfc:Bool = false;
         var sel:Bool = false;
         
+        var currentItem = items[selectedIndex];
+
         #if !FLX_NO_KEYBOARD
-        dfc = FlxG.keys.anyJustPressed([ ESCAPE, Q ]);
-        down = FlxG.keys.anyJustPressed([DOWN, S]);
-        up = FlxG.keys.anyJustPressed([UP, W]);
-        sel = FlxG.keys.anyJustPressed([ ENTER, E ]);
+
+        dfc = FlxG.keys.anyJustPressed([ ESCAPE ]);
+        down = FlxG.keys.anyJustPressed([ DOWN ]);
+        up = FlxG.keys.anyJustPressed([ UP ]);
+        sel = FlxG.keys.anyJustPressed([ ENTER ]);
+        if (currentItem != null && currentItem.keyNavigation) {
+            dfc = dfc || FlxG.keys.anyJustPressed([ Q ]);
+            down = down || FlxG.keys.anyJustPressed([ S ]);
+            up = up || FlxG.keys.anyJustPressed([ W ]);
+            sel = sel || FlxG.keys.anyJustPressed([ E ]);
+        }
+
         #end
 
         #if !FLX_NO_GAMEPAD

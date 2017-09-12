@@ -30,6 +30,8 @@ class NFMenuItem extends FlxGroup {
     public var x(get, null):Float;
     public var y(get, null):Float;
 
+    public var keyNavigation:Bool = true;
+
     private var callback:Void->Void;
 
     public function new(Text:NFText, Width:Float, ?SelectCallback:Void->Void) {
