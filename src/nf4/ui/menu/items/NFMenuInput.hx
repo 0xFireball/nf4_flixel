@@ -142,7 +142,7 @@ class NFMenuInput extends NFMenuItem {
                 caretIndex++;
                 // text = text; // forces scroll update
             }
-        } 
+        }
         // End key
         else if (key == 35) 
         {
