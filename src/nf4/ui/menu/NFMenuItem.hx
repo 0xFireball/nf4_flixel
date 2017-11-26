@@ -177,7 +177,7 @@ class NFMenuItem extends FlxGroup {
         #if !FLX_NO_TOUCH
         var touch = FlxG.touches.getFirst();
         if (touch != null) {
-            hover = hover || backing.getHitbox().containsPoint(touch);
+            hover = hover || backing.getHitbox().containsPoint(touch.getPosition());
         }
         #end
         return hover;
